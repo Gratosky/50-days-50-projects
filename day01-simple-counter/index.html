@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="field"></div>
+    <button class="increment">Add</button>
+    <button class="decrement">Subtract</button>
+    <script>
+      const field = document.querySelector(".field");
+      const increment = document.querySelector(".increment");
+      const decrement = document.querySelector(".decrement");
+      let count = 0;
+
+      function incrementCount() {
+        count++;
+        field.textContent = count;
+      }
+
+      function decrementCount() {
+        count--;
+
+        if (count < 0) {
+          count = 0;
+          return;
+        }
+        field.textContent = count;
+      }
+
+      increment.addEventListener("click", incrementCount);
+      decrement.addEventListener("click", decrementCount);
+    </script>
+  </body>
+</html>
