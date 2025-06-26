@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BACKGROUND-COLOR-CHANGER</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+      }
+
+      button {
+        width: 100px;
+        height: 30px;
+        background-color: chocolate;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click me!</button>
+
+    <script>
+      const button = document.querySelector("button");
+      const body = document.querySelector("body");
+
+      //create random colors first and then construct them using string literals
+      function changeBackgroundColor() {
+        const randomRed = Math.floor(Math.random() * 256);
+        const randomGreen = Math.floor(Math.random() * 256);
+        const randomBlue = Math.floor(Math.random() * 256);
+
+        body.style.backgroundColor = `rgb(
+          ${randomRed}, ${randomGreen}, ${randomBlue}
+        )`;
+      }
+
+      button.addEventListener("click", changeBackgroundColor);
+    </script>
+  </body>
+</html>
