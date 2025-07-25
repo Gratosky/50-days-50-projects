@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .list-item {
+      list-style-type: none;
+    }
+
+    .input-field {
+      display: flex;
+      gap: 6px;
+      flex-direction: column;
+      max-width: fit-content;
+      justify-items: center;
+      background-color: aqua;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .todo-list {
+      max-width: 500px;
+      background-color: blueviolet;
+      max-height: fit-content;
+    }
+
+    .trackList {
+      max-width: 200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+  </style>
+  <body>
+    <!--Container to old to-do list items-->
+    <div class="todo-list">
+      <ul class="trackList"></ul>
+    </div>
+
+    <!--Input field and submit button-->
+    <div class="input-field">
+      <label for="input-list" class="to-do">Enter Task</label>
+      <input type="text" id="input-list" name="input" />
+      <button type="submit" class="submit">Add Task</button>
+    </div>
+
+    <script>
+      const todoList = document.querySelector(".todo-list");
+      const inputList = document.querySelector("#input-list");
+      const submitBtn = document.querySelector(".submit");
+      const trackList = document.querySelector(".trackList");
+
+      function addTask() {
+        const task = inputList.value;
+
+        if (task) {
+          const li = document.createElement("li");
+          li.classList.add("list-item");
+          li.textContent = task;
+
+          trackList.appendChild(li);
+        }
+      }
+
+      submitBtn.addEventListener("click", addTask);
+    </script>
+  </body>
+</html>

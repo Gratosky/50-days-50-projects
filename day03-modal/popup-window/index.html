@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .modal-overlay {
+        display: none;
+      }
+
+      .modal-overlay.modal-active {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main button to open the modal -->
+    <button id="openModalBtn">Open Popup</button>
+
+    <!-- The Modal Structure -->
+    <div id="myModal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <!-- The 'x' for closing -->
+        <h2>Welcome to Our Popup!</h2>
+        <p>This is some content inside your modal window.</p>
+        <button id="confirmBtn">Confirm</button>
+      </div>
+    </div>
+    <script>
+      const openModalBtn = document.getElementById("openModalBtn");
+      const myModal = document.querySelector(".modal-overlay");
+      const closeBtn = document.querySelector(".close-button");
+      const confirmBtn = document.getElementById("confirmBtn");
+
+      function toggleModal() {
+        myModal.classList.toggle("modal-active");
+
+        document.body.classList.toggle("no-scroll");
+      }
+
+      openModalBtn.addEventListener("click", toggleModal);
+
+      closeBtn.addEventListener("click", toggleModal);
+
+      confirmBtn.addEventListener("click", toggleModal);
+    </script>
+  </body>
+</html>

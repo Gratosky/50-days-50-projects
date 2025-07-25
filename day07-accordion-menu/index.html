@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions Example</title>
+    
+    <style>
+    .transition-box {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: #333;
+    border: 2px solid #555;
+    cursor: pointer; /* Indicates it's interactive */
+
+    /* --- Transition Properties --- */
+    /* Apply transition to width, height, background-color over 0.3 seconds with an ease timing function */
+    transition-property: width, height, background-color, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: -0.1s;
+    /* We can also use the shorthand: */
+    /* transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, transform 0.3s ease; */
+    /* Or even simpler if all properties use the same duration and timing function: */
+    /* transition: all 0.3s ease; */
+}
+
+.transition-box:hover {
+    width: 150px;
+    height: 150px;
+    background-color: salmon;
+    transform: rotate(-30deg); /* Add a slight rotation */
+    box-shadow: 0 8px 6px rgb(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 10px;
+    color: pink;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.3rem;
+}
+
+.menu{
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    transition-delay: 0.2s;
+}
+
+.menu-open {
+    overflow: auto;
+    max-height: 200px;
+}
+
+#my-header:hover{
+    cursor: pointer;
+    background-color: chocolate;
+    color: antiquewhite;
+}
+    </style>
+</head>
+<body>
+    <div class="transition-box">Hover Over Me!</div>
+    <div class="accordion-header">
+    <header id="my-header" role="button">My Header
+        
+    </header>
+    <div class="menu" id="my-menu">
+            <div class="home" >Home</div>
+            <div class="about">About</div>
+            <div class="contact">Contact Us</div>
+        </div>
+        
+    </div>
+    <script>
+        const myHeader = document.getElementById('my-header')
+        const myMenu = document.getElementById('my-menu')
+
+        myHeader.addEventListener('click', () => {
+            myMenu.classList.toggle('menu-open')
+        })
+    </script>
+</body>
+</html>
