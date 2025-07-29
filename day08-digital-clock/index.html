@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .my-clock {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 3px;
+        background-color: aqua;
+        justify-content: center;
+        padding: 20px 30px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        border-left: 3px solid blue;
+        font-size: large;
+      }
+
+      .my-clock:hover {
+        transform-style: preserve-3d;
+        transform: rotate(7deg);
+        color: cadetblue;
+        color: deepskyblue;
+        background-color: bisque;
+        border-left: 3px solid rebeccapurple;
+      }
+
+      .current-time {
+        color: rgb(47, 40, 175);
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="my-clock">
+      <h1 class="current-time">Current Time</h1>
+      <div id="clock">Loading...</div>
+      <p class="info" id="currentLocaleInfo"></p>
+    </div>
+
+    <script>
+      const myClock = document.getElementById("clock");
+      const localeInfo = document.getElementById("currentLocaleInfo");
+
+      const desiredLocale = "en-US";
+
+      const timeFormattingOptions = {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      };
+
+      localeInfo.textContent = `Displaying time for locale: '${desiredLocale}' with 12-hour format: ${timeFormattingOptions.hour12}`;
+
+      function updateTime() {
+        const time = new Date();
+
+        const timeString = time.toLocaleString(
+          desiredLocale,
+          timeFormattingOptions
+        );
+
+        myClock.textContent = timeString;
+      }
+
+      updateTime();
+      const intervalId = setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>

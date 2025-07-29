@@ -16,6 +16,7 @@
     align-items: center;
     font-family: sans-serif;
     color: #333;
+    position: relative;
     border: 2px solid #555;
     cursor: pointer; /* Indicates it's interactive */
 
@@ -42,13 +43,15 @@
     color: pink;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.3rem;
+    position: relative;
 }
 
 .menu{
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-in-out;
     transition-delay: 0.2s;
+    background-color: burlywood;
 }
 
 .menu-open {
