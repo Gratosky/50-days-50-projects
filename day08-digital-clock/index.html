@@ -24,15 +24,19 @@
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         border-left: 3px solid blue;
         font-size: large;
+        transition-property: width, height, background-color, transform;
+        transition-duration: 0.3s;
+        transition-timing-function: ease;
+        transition-delay: 0.1s;
+        color: fuchsia;
       }
 
       .my-clock:hover {
         transform-style: preserve-3d;
-        transform: rotate(7deg);
-        color: cadetblue;
         color: deepskyblue;
         background-color: bisque;
         border-left: 3px solid rebeccapurple;
+        transform: scale(1.1);
       }
 
       .current-time {

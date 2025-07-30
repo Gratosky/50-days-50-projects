@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="styles.css" />
+  <body>
+    <!--Container to old to-do list items-->
+    <div class="todo-list">
+      <ul class="trackList"></ul>
+    </div>
+
+    <!--Input field and submit button-->
+    <div class="input-field">
+      <label for="input-list" class="to-do">Enter Task</label>
+      <input type="text" id="input-list" name="input" />
+      <button type="submit" class="submit">Add Task</button>
+    </div>
+
+    <script>
+      const todoList = document.querySelector(".todo-list");
+      const inputList = document.querySelector("#input-list");
+      const submitBtn = document.querySelector(".submit");
+      const trackList = document.querySelector(".trackList");
+
+      function addTask() {
+        const task = inputList.value;
+
+        if (task) {
+          //creating list items
+          const li = document.createElement("li");
+          li.classList.add("list-item");
+          li.textContent = "Todo";
+
+          const todoContent = document.createElement("div");
+          todoContent.textContent = task;
+          todoContent.classList.add("todo-content");
+          li.appendChild(todoContent);
+
+          //create delete button
+          const deleteButton = document.createElement("button");
+          deleteButton.classList.add("delete-button");
+          deleteButton.textContent = "Delete";
+
+          li.appendChild(deleteButton);
+
+          trackList.appendChild(li);
+
+          inputList.value = "";
+        }
+      }
+
+      if (trackList) {
+        trackList.addEventListener("click", (event) => {
+          if (event.target.classList.contains("delete-button")) {
+            console.log("Delete button clicked.");
+
+            const listItem = event.target.closest("li");
+
+            if (listItem) {
+              listItem.remove();
+              console.log("Element removed successfully.");
+            }
+          }
+        });
+      }
+
+      submitBtn.addEventListener("click", addTask);
+    </script>
+  </body>
+</html>
